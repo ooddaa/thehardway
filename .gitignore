@@ -1,0 +1,8 @@
+__pycache__/
+*.log
+*.pyc
+site-packages/
+bin/
+lib/
+venv/
+.mypy_cache/
