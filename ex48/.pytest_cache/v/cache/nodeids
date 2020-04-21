@@ -1,8 +1,0 @@
-[
-  "tests/lexicon_test.py::test_directions",
-  "tests/lexicon_test.py::test_verbs",
-  "tests/lexicon_test.py::test_stops",
-  "tests/lexicon_test.py::test_nouns",
-  "tests/lexicon_test.py::test_numbers",
-  "tests/parser_test.py::test_parse_sentence"
-]
