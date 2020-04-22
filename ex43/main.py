@@ -1,9 +1,25 @@
 from sys import exit
 from random import randint
 from textwrap import dedent
-from locations import *
-from things import *
-from persons import *
+import sys
+import game
+
+# from game.things import *
+# from game.locations import *
+# import game.things
+import game.locations
+
+# print(sys.modules)
+# from game.locations import *
+# import game.locations
+# import * from game.locations as locations
+# locations = __import__('game.locations', globals(), locals(), [], 0)
+
+# from game.things import *
+# import game.things
+# from game.persons import *
+# from game.things import * as things
+# things = __import__('game.things', globals(), locals(), [], 0)
 # https://docs.python.org/3/tutorial/classes.html
 
 
@@ -35,12 +51,12 @@ class Map(object):
 
     def __init__(self):
         self._map = {
-            'office': Office(),
-            'level1': Level1(),
-            'level2': Level1(),
-            'level3': Level1(),
-            'roof': Roof(),
-            'morgue': Morgue(),
+            'office': game.locations.office,
+            'level1': game.locations.level1,
+            'level2': game.locations.level2,
+            'level3': game.locations.level3,
+            'roof': game.locations.roof,
+            'morgue': game.locations.morgue,
         }
         self.starting_location = self._map['level1']  # to begin with
         self.current_location = None

@@ -1,11 +1,37 @@
+# https://docs.python.org/3/reference/import.html
+""" This is relative import. 
+return secretary_office.enter()
+return locations.secretary_office.enter()
+return game.locations.secretary_office.enter()
+none of it will work.
+"""
+# from game.locations import *
+import game.locations
+import sys
 from sys import exit
 from random import randint
 from textwrap import dedent
 
-# from locations import *
-from persons import *
+# from game.locations import *
+# import game.locations as locations
+# import locations as locations
+# from .locations import *
+""" OK now, after 15 minutes of figuring out imports. This is an absolute import.
+If I do this, then namespaces of game.locations module will be available in this module
+as game.locations.secretary_door.
 
-locations = __import__('locations', globals(), locals(), [], 0)
+It seems that my problem is how to make secretary_door available as a separate namespace.
+"""
+# print(sys.modules)
+""" 
+'game': <module 'game' (namespace)>, 
+'game.locations': <module 'game.locations' from '/Users/oda/Desktop/code/python/hard_way/ex43/game/locations.py'>, 
+'game.things': <module 'game.things' from '/Users/oda/Desktop/code/python/hard_way/ex43/game/things.py'>}
+"""
+
+# from .persons import *
+
+# locations = __import__('game.locations', globals(), locals(), [], 0)
 
 
 class Thing(object):
@@ -81,10 +107,11 @@ class SecretaryDoor(Door):
             return False
 
     def enter(self):
-        return locations.secretary_office.enter()
+        return game.locations.secretary_office.enter()
+        # return secretary_office.enter()
 
     def stay(self):
-        return locations.level3.enter()
+        return game.locations.level3.enter()
 
 
 class BossOfficeDoor(Door):
@@ -102,10 +129,10 @@ class BossOfficeDoor(Door):
             return False
 
     def enter(self):
-        return locations.boss_office.enter()
+        return game.locations.boss_office.enter()
 
     def stay(self):
-        return locations.level3.enter()
+        return game.locations.level3.enter()
 
 
 class HRDoor(Door):
@@ -121,10 +148,10 @@ class HRDoor(Door):
             return False
 
     def enter(self):
-        return locations.hr_office.enter()
+        return game.locations.hr_office.enter()
 
     def stay(self):
-        return locations.level2.enter()
+        return game.locations.level2.enter()
 
 
 class RoofDoor(Door):
@@ -140,10 +167,10 @@ class RoofDoor(Door):
             return False
 
     def enter(self):
-        return locations.roof.enter()
+        return game.locations.roof.enter()
 
     def stay(self):
-        return locations.level3.enter()
+        return game.locations.level3.enter()
 
 
 class Helicopter(Thing):

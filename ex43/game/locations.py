@@ -1,10 +1,10 @@
-from persons import *
 from sys import exit
 from random import randint
 from textwrap import dedent
+import sys
 
-# from things import *
-things = __import__('locations', globals(), locals(), [], 0)
+""" print(sys.modules) shows 'game.things': <module 'game.things' from '/Users/oda/Desktop/code/python/hard_way/ex43/game/things.py'> """
+import game.things as things
 
 
 class Location(object):
@@ -39,6 +39,9 @@ class Office(Location):
     def get_info(self):
         print(self.__class__.__name__)
         pass
+
+
+office = Office()
 
 
 class Morgue(Location):
@@ -85,7 +88,6 @@ class Roof(Location):
 
     def leave(self):
         super().leave(level3)
-
 
         # if self.inside == False:
         #     pass
